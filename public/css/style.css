@@ -71,7 +71,7 @@ footer {
 }
 .item .buttons form {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0.5px;
 }
 /* users */
 .user-profile .name {
