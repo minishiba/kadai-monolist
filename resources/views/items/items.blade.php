@@ -19,7 +19,6 @@
                                     @include('items.have_button', ['item' => $item])
                                 @endif
                             </div>
-                            
                         </div>
                         @if (isset($item->count))
                             <div class="panel-footer">
