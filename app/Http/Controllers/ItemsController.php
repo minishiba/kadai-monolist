@@ -31,14 +31,15 @@ use \App\Item;
                 $item->image_url = str_replace('?_ex=128x128', '', $rws_item['Item']['mediumImageUrls'][0]['imageUrl']);
                 $items[] = $item;
             }
-        }
+        
 
         return view('items.create', [
             'keyword' => $keyword,
             'items' => $items,
         ]);
     }
-     public function show($id)
+    
+    public function show($id)
     {
       $item = Item::find($id);
       $want_users = $item->want_users;
