@@ -51,11 +51,6 @@ footer {
 .search {
     margin-bottom: 20px;
 }
-
-/* item */
-.item .panel-body {
-    height: 70px;
-}
 .item .panel-heading {
     height: 250px;
 }

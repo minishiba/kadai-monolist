@@ -31,7 +31,7 @@ use \App\Item;
                 $item->image_url = str_replace('?_ex=128x128', '', $rws_item['Item']['mediumImageUrls'][0]['imageUrl']);
                 $items[] = $item;
             }
-        
+        }
 
         return view('items.create', [
             'keyword' => $keyword,
@@ -41,12 +41,17 @@ use \App\Item;
     
     public function show($id)
     {
-      $item = Item::find($id);
-      $want_users = $item->want_users;
+        $user = User::find($id);
+        $count_want = $user->want_items()->count();
+        $count_have = $user->have_items()->count();
+        $items = \DB::table('items')->join('item_user', 'items.id', '=', 'item_user.item_id')->select('items.*')->where('item_user.user_id', $user->id)->distinct()->paginate(20);
 
-      return view('items.show', [
-          'item' => $item,
-          'want_users' => $want_users,
+        return view('users.show', [
+            'user' => $user,
+            'items' => $items,
+            'count_want' => $count_want,
+            'count_have' => $count_have,
+           
       ]);
     }
-  }
+}
